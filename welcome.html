@@ -8,8 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <h2>Welcome to the Dashboard</h2>
+        <h2>Welcome, <span id="user"></span>!</h2>
         <p>You have successfully logged in!</p>
+        <button id="logout">Log Out</button>
     </div>
+    <script>
+        // Display the logged-in user's name
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (!loggedInUser) {
+            // If no logged-in user, redirect to the login page
+            window.location.href = 'index.html';
+        } else {
+            document.getElementById('user').textContent = loggedInUser;
+        }
+
+        // Handle logout
+        document.getElementById('logout').addEventListener('click', function () {
+            localStorage.removeItem('loggedInUser');  // Remove the logged-in user
+            window.location.href = 'index.html';  // Redirect to the login page
+        });
+    </script>
 </body>
 </html>
