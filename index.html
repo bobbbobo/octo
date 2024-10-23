@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up / Login</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2 id="formTitle">Sign Up</h2>
-        <form id="authForm">
+        <h2>Sign Up</h2>
+        <form id="signUpForm">
             <div class="input-field">
                 <label for="username">Username</label>
                 <input type="text" id="username" placeholder="Enter username" required>
@@ -20,9 +20,28 @@
             </div>
             <button type="submit">Sign Up</button>
             <p id="message"></p>
-            <p><a href="#" id="toggleForm">Already have an account? Log In</a></p>
+            <p>Already have an account? <a href="login.html">Log In</a></p>
         </form>
     </div>
-    <script src="app.js"></script>
+    <script>
+        // Handle sign-up
+        const signUpForm = document.getElementById('signUpForm');
+        const message = document.getElementById('message');
+
+        signUpForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if username already exists
+            if (!localStorage.getItem(username)) {
+                localStorage.setItem(username, password);  // Save credentials in localStorage
+                localStorage.setItem('loggedInUser', username);  // Set logged-in user
+                window.location.href = 'welcome.html';  // Redirect to welcome page after sign-up
+            } else {
+                message.textContent = 'Username already exists! Please log in.';
+            }
+        });
+    </script>
 </body>
 </html>
