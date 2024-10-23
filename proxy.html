@@ -9,13 +9,18 @@
 <body>
     <div class="container">
         <h2>Proxy Page</h2>
-        <p>Enter a URL or select from the options below to access content securely.</p>
+        <p>Enter a URL to load content within this page.</p>
         
         <!-- URL Input -->
         <input type="text" id="urlInput" placeholder="Enter website URL" />
-        <button id="goBtn">Go</button>
+        <button id="loadUrlBtn">Load Website</button>
 
-        <!-- Predefined Links -->
+        <!-- Iframe to display the website -->
+        <div class="iframe-container">
+            <iframe id="proxyIframe" src="" width="100%" height="600px" style="border: none;"></iframe>
+        </div>
+
+        <!-- Predefined Links (optional) -->
         <h3>Or visit these sections:</h3>
         <ul>
             <li><a href="content-hosting.html" target="_blank">Content Hosting</a></li>
@@ -28,14 +33,16 @@
     </div>
 
     <script>
-        // Handle URL input redirection
-        const goBtn = document.getElementById('goBtn');
-        goBtn.addEventListener('click', function() {
+        // Function to load the entered URL into the iframe
+        document.getElementById('loadUrlBtn').addEventListener('click', function() {
             const url = document.getElementById('urlInput').value;
-            if (url) {
-                window.open(url, '_blank');  // Open the entered URL in a new tab
+            const iframe = document.getElementById('proxyIframe');
+
+            // Check if the URL starts with http:// or https://
+            if (url.startsWith('http://') || url.startsWith('https://')) {
+                iframe.src = url;  // Load the URL into the iframe
             } else {
-                alert('Please enter a valid URL.');
+                alert('Please enter a valid URL starting with http:// or https://');
             }
         });
     </script>
