@@ -10,8 +10,19 @@
     <div class="container">
         <h2>Welcome, <span id="user"></span>!</h2>
         <p>You have successfully logged in!</p>
+
+        <!-- Buttons to other sections -->
+        <button id="contentHostingBtn">Content Hosting</button>
+        <button id="databaseBtn">Database</button>
+        <button id="settingsBtn">Settings</button>
+        <button id="gameBtn">Game</button>
+        <button id="chatBtn">Real-Time Chat</button>
+        <button id="aboutBtn">About</button>
+        
+        <!-- Log out button -->
         <button id="logout">Log Out</button>
     </div>
+
     <script>
         // Display the logged-in user's name
         const loggedInUser = localStorage.getItem('loggedInUser');
@@ -21,6 +32,26 @@
         } else {
             document.getElementById('user').textContent = loggedInUser;
         }
+
+        // Handle navigation to other sections
+        document.getElementById('contentHostingBtn').addEventListener('click', function () {
+            window.location.href = 'content-hosting.html';
+        });
+        document.getElementById('databaseBtn').addEventListener('click', function () {
+            window.location.href = 'database.html';
+        });
+        document.getElementById('settingsBtn').addEventListener('click', function () {
+            window.location.href = 'settings.html';
+        });
+        document.getElementById('gameBtn').addEventListener('click', function () {
+            window.location.href = 'game.html';
+        });
+        document.getElementById('chatBtn').addEventListener('click', function () {
+            window.location.href = 'chat.html';
+        });
+        document.getElementById('aboutBtn').addEventListener('click', function () {
+            window.location.href = 'about.html';
+        });
 
         // Handle logout
         document.getElementById('logout').addEventListener('click', function () {
