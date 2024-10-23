@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Proxy Page</h2>
+        <p>Enter a URL or select from the options below to access content securely.</p>
+        
+        <!-- URL Input -->
+        <input type="text" id="urlInput" placeholder="Enter website URL" />
+        <button id="goBtn">Go</button>
+
+        <!-- Predefined Links -->
+        <h3>Or visit these sections:</h3>
+        <ul>
+            <li><a href="content-hosting.html" target="_blank">Content Hosting</a></li>
+            <li><a href="database.html" target="_blank">Database</a></li>
+            <li><a href="settings.html" target="_blank">Settings</a></li>
+            <li><a href="game.html" target="_blank">Game Page</a></li>
+            <li><a href="chat.html" target="_blank">Real-Time Chat</a></li>
+            <li><a href="about.html" target="_blank">About</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Handle URL input redirection
+        const goBtn = document.getElementById('goBtn');
+        goBtn.addEventListener('click', function() {
+            const url = document.getElementById('urlInput').value;
+            if (url) {
+                window.open(url, '_blank');  // Open the entered URL in a new tab
+            } else {
+                alert('Please enter a valid URL.');
+            }
+        });
+    </script>
+</body>
+</html>
