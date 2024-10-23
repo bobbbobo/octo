@@ -17,7 +17,7 @@
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (!loggedInUser) {
             // If no logged-in user, redirect to the login page
-            window.location.href = 'index.html';
+            window.location.href = 'login.html';
         } else {
             document.getElementById('user').textContent = loggedInUser;
         }
@@ -25,7 +25,7 @@
         // Handle logout
         document.getElementById('logout').addEventListener('click', function () {
             localStorage.removeItem('loggedInUser');  // Remove the logged-in user
-            window.location.href = 'index.html';  // Redirect to the login page
+            window.location.href = 'login.html';  // Redirect to the login page
         });
     </script>
 </body>
