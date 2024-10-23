@@ -18,6 +18,7 @@
         <button id="gameBtn">Game</button>
         <button id="chatBtn">Real-Time Chat</button>
         <button id="aboutBtn">About</button>
+        <button id="proxyBtn">Proxy Page</button> <!-- New Proxy Page button -->
         
         <!-- Log out button -->
         <button id="logout">Log Out</button>
@@ -51,6 +52,9 @@
         });
         document.getElementById('aboutBtn').addEventListener('click', function () {
             window.location.href = 'about.html';
+        });
+        document.getElementById('proxyBtn').addEventListener('click', function () {
+            window.location.href = 'proxy.html';  // Redirect to the Proxy Page
         });
 
         // Handle logout
