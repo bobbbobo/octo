@@ -23,67 +23,22 @@
             <p>Don't have an account? <a href="index.html">Sign Up</a></p>
         </form>
     </div>
+    
     <script>
         // Handle login
         const loginForm = document.getElementById('loginForm');
         const message = document.getElementById('message');
 
         loginForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+            event.preventDefault();  // Prevent the page from refreshing
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Check if the username and password match what's in localStorage
+            // Check if the username and password match what's stored in localStorage
             const storedPassword = localStorage.getItem(username);
             if (storedPassword === password) {
-                localStorage.setItem('loggedInUser', username);  // Store the logged-in user
-                window.location.href = 'welcome.html';  // Redirect to the welcome page
-            } else {
-                message.textContent = 'Invalid username or password!';
-            }
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h2>Log In</h2>
-        <form id="loginForm">
-            <div class="input-field">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter username" required>
-            </div>
-            <div class="input-field">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password" required>
-            </div>
-            <button type="submit">Log In</button>
-            <p id="message"></p>
-            <p>Don't have an account? <a href="index.html">Sign Up</a></p>
-        </form>
-    </div>
-    <script>
-        // Handle login
-        const loginForm = document.getElementById('loginForm');
-        const message = document.getElementById('message');
-
-        loginForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Check if the username and password match what's in localStorage
-            const storedPassword = localStorage.getItem(username);
-            if (storedPassword === password) {
-                localStorage.setItem('loggedInUser', username);  // Store the logged-in user
+                localStorage.setItem('loggedInUser', username);  // Store logged-in user info
                 window.location.href = 'welcome.html';  // Redirect to the welcome page
             } else {
                 message.textContent = 'Invalid username or password!';
