@@ -3,48 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>GitHub Repository Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        async function fetchGitHubRepo() {
+            const response = await fetch('https://api.github.com/repos/bobbbobo/octo');
+            const repo = await response.json();
+
+            document.getElementById('repo-name').innerText = repo.name;
+            document.getElementById('repo-description').innerText = repo.description;
+            document.getElementById('repo-url').href = repo.html_url;
+        }
+
+        window.onload = fetchGitHubRepo;
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h2>Proxy Page</h2>
-        <p>Enter a URL to load content within this page.</p>
-        
-        <!-- URL Input -->
-        <input type="text" id="urlInput" placeholder="Enter website URL" />
-        <button id="loadUrlBtn">Load Website</button>
-
-        <!-- Iframe to display the website -->
-        <div class="iframe-container">
-            <iframe id="proxyIframe" src="" width="100%" height="600px" style="border: none;"></iframe>
-        </div>
-
-        <!-- Predefined Links (optional) -->
-        <h3>Or visit these sections:</h3>
-        <ul>
-            <li><a href="content-hosting.html" target="_blank">Content Hosting</a></li>
-            <li><a href="database.html" target="_blank">Database</a></li>
-            <li><a href="settings.html" target="_blank">Settings</a></li>
-            <li><a href="game.html" target="_blank">Game Page</a></li>
-            <li><a href="chat.html" target="_blank">Real-Time Chat</a></li>
-            <li><a href="about.html" target="_blank">About</a></li>
-        </ul>
-    </div>
-
-    <script>
-        // Function to load the entered URL into the iframe
-        document.getElementById('loadUrlBtn').addEventListener('click', function() {
-            const url = document.getElementById('urlInput').value;
-            const iframe = document.getElementById('proxyIframe');
-
-            // Check if the URL starts with http:// or https://
-            if (url.startsWith('http://') || url.startsWith('https://')) {
-                iframe.src = url;  // Load the URL into the iframe
-            } else {
-                alert('Please enter a valid URL starting with http:// or https://');
-            }
-        });
-    </script>
+    <h1>GitHub Repository Info</h1>
+    <p><strong>Name:</strong> <span id="repo-name"></span></p>
+    <p><strong>Description:</strong> <span id="repo-description"></span></p>
+    <a id="repo-url" target="_blank">Go to Repository</a>
 </body>
 </html>
